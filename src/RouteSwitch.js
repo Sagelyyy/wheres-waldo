@@ -12,8 +12,17 @@ const RouteSwitch = () => {
     const [visible, setVisible] = React.useState(false)
 
     const clickHandler = (e) => {
-      console.log(`CLICK! ${e.clientX} , ${e.clientY}`)
-      setCoords({x: e.clientX, y: e.clientY})
+      let htmlScroll = document.getElementsByTagName('html')[0].scrollTop
+      let screenWidth = document.documentElement.clientWidth
+      let screenHeight = document.documentElement.clientHeight
+      console.log(e.clientX, screenWidth)
+      if(e.clientY > screenHeight - 50){
+          e.clientY -= 50
+      }
+      if(e.clientX > screenWidth - 100){
+          e.clientX -= 100
+      }
+      setCoords({x: e.clientX, y: e.clientY + htmlScroll})
       setVisible(old => !old)
     }
   

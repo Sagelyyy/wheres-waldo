@@ -10,7 +10,7 @@ const Game = (props) => {
 
     return(
         <div>
-            <img className='game--image' onMouseDown={props.clickHandler} style={{width:"75%"}} src={waldo} />
+            <img alt='find waldo' className='game--image' onMouseDown={props.clickHandler} style={{width:"100%"}} src={waldo} />
             <Menu coords={props.coords} visible={props.visible}/>
         </div>
     )

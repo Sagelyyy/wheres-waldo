@@ -4,3 +4,8 @@
   background-color: aqua;
   cursor: pointer;
 }
+
+.game--image{
+  display: block;
+  margin: 0 auto;
+}

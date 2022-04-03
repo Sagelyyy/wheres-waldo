@@ -15,6 +15,8 @@ const Menu = (props) => {
         border: '1px solid black'
     }
 
+    //TODO Maybe we can pass the menu items in as props in an array, map through it and place the items on the context menu
+
     if (props.visible) {
         return (
             <ul className="menu" style={menuStyle}>
