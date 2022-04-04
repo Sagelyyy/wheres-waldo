@@ -17,6 +17,7 @@ const RouteSwitch = () => {
         let screenHeight = document.documentElement.clientHeight
         let realX = e.clientX
         let realY = e.clientY
+
         
 
         if (e.clientY > screenHeight - 50) {
@@ -26,15 +27,28 @@ const RouteSwitch = () => {
             e.clientX -= 100
         }
 
-        if(realX >= 805 && realX <= 833){
-            if(realY + htmlScroll >= 920  && realY + htmlScroll <= 986 ){
-                console.log('walldo!')
-            }
-        }
+        // if(realX >= 805 && realX <= 833){
+        //     if(realY + htmlScroll >= 920  && realY + htmlScroll <= 986 ){
+        //         console.log('walldo!')
+        //     }
+        // }
+
+        checkSelection(realX, realY)
 
         console.log('x: ' + e.clientX, 'y: ' + parseInt(e.clientY + htmlScroll))
         setCoords({ x: e.clientX, y: e.clientY + htmlScroll })
         setVisible(old => !old)
+    }
+
+    const checkSelection = (x, y) => {
+
+        const img = document.querySelector('.game--image')
+
+        const imgRect = img.getBoundingClientRect()
+
+        console.log(imgRect.top)
+
+        console.log('x ' + (x - imgRect.left), 'y ' + (y - imgRect.top))
     }
 
     const getDifficulty = () => {
