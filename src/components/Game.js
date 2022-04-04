@@ -6,12 +6,24 @@ const Game = (props) => {
 
     document.addEventListener("contextmenu", (event) => {
         event.preventDefault();
-      });
+    });
 
-    return(
+    const [playing, setPlaying] = React.useState(false)
+
+    return (
         <div>
-            <img alt='find waldo' className='game--image' onMouseDown={props.clickHandler} style={{width:"100%"}} src={waldo} />
-            <Menu coords={props.coords} visible={props.visible}/>
+            {!playing ?
+                <div>
+                    <h1>Choose Your Difficulty!</h1>
+                    <img alt='find waldo' className='game--image--choose' onClick={() => setPlaying(true)} style={{ width: "25%" }} src={waldo} />
+                </div>
+                    : 
+                <div>
+                    <img alt='find waldo' className='game--image' onMouseDown={props.clickHandler} style={{ width: "100%" }} src={waldo} />
+                    <Menu coords={props.coords} visible={props.visible} />
+                </div>
+            }
+
         </div>
     )
 }
