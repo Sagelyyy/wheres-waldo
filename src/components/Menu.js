@@ -15,13 +15,14 @@ const Menu = (props) => {
         border: '1px solid black'
     }
 
-    //TODO Maybe we can pass the menu items in as props in an array, map through it and place the items on the context menu
-
+    const characters = props.level[0].characters[0]
+    
     if (props.visible) {
         return (
             <ul className="menu" style={menuStyle}>
-                <li className="menu--item">Test 1</li>
-                <li className="menu--item">Test 2</li>
+                <li className="menu--item">{characters.waldo.name}</li>
+                <li className="menu--item">{characters.wizard.name}</li>
+                <li className="menu--item">{characters.odlaw.name}</li>
             </ul>
         )
     }

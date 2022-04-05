@@ -13,14 +13,16 @@ const RouteSwitch = () => {
     const [visible, setVisible] = React.useState(false)
     const [playing, setPlaying] = React.useState(false)
     const [level, setLevel] = React.useState()
+    const [victory, setVictory] = React.useState()
 
     const clickHandler = (e) => {
         let htmlScroll = document.getElementsByTagName('html')[0].scrollTop
         let screenWidth = document.documentElement.clientWidth
         let screenHeight = document.documentElement.clientHeight
 
-        let yPercent = (e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100
         let xPercent = (e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100
+        let yPercent = (e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100
+     
 
         if (e.clientY > screenHeight - 50) {
             e.clientY -= 50
@@ -36,11 +38,23 @@ const RouteSwitch = () => {
 
     const checkSelection = (x, y) => {
         const waldo = level[0].characters[0].waldo
-        console.log(`X: ${x} xMin ${waldo.xMin} xMax: ${waldo.xMax}`)
-        console.log(`Y: ${y} xMin ${waldo.yMin} xMax: ${waldo.yMax}`)
+        const wizard = level[0].characters[0].wizard
+        const odlaw = level[0].characters[0].odlaw
+        // console.log(`X: ${x} xMin ${wizard.xMin} xMax: ${wizard.xMax}`)
+        // console.log(`Y: ${y} xMin ${wizard.yMin} xMax: ${wizard.yMax}`)
         if(x >= waldo.xMin && x <= waldo.xMax){
             if(y >= waldo.yMin && y <= waldo.yMax){
                 console.log('waldo!')
+            }
+        }
+        if(x >= wizard.xMin && x <= wizard.xMax){
+            if(y >= wizard.yMin && y <= wizard.yMax){
+                console.log('wizard!')
+            }
+        }
+        if(x >= odlaw.xMin && x <= odlaw.xMax){
+            if(y >= odlaw.yMin && y <= odlaw.yMax){
+                console.log('odlaw!')
             }
         }
     }
@@ -60,12 +74,13 @@ const RouteSwitch = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<App />}>
+                <Route path="/" element={<App playing={playing} setPlaying={setPlaying}/>}>
                     <Route path="/" element={<Game 
                     clickHandler={clickHandler} 
                     coords={coords} visible={visible} 
                     levelSetup={levelSetup} 
                     playing={playing}
+                    level={level}
                     
                     />} />
                 </Route>

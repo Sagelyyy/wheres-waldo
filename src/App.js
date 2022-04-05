@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Outlet, Link } from "react-router-dom"
 
-function App() {
+function App(props) {
   
   const style = {
     borderBottom: "solid 1px",
@@ -14,7 +14,7 @@ function App() {
       Navigation
       <nav style={style}>
         <div className='nav--links--container'>
-          <Link className='nav--link' to="/">Home</Link> | {" "}
+          <Link onClick={() => {props.setPlaying(false)}} className='nav--link' to="/">Home</Link> | {" "}
         </div>
       </nav>
       <Outlet />

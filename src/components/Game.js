@@ -17,8 +17,8 @@ const Game = (props) => {
                 </div>
                     : 
                 <div>
-                    <img alt='find waldo' className='game--image' onMouseDown={props.clickHandler} style={{ width: "100%" }} src={waldo} />
-                    <Menu coords={props.coords} visible={props.visible} />
+                    <img alt='find waldo' className='game--image' onMouseDown={props.clickHandler} style={{ width: "100%" }} src={props.level[0].image} />
+                    <Menu level={props.level} coords={props.coords} visible={props.visible} />
                 </div>
             }
 

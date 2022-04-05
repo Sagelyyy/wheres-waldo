@@ -1,3 +1,6 @@
+import easyLevel from "./images/easy.jpeg"
+
+
 const gameData =
     [
         {
@@ -5,7 +8,7 @@ const gameData =
                 [
                     {
                         difficulty: 'easy',
-                        image: './images/easy.jpg',
+                        image: easyLevel,
                         characters:
                             [
                                 {
@@ -17,10 +20,18 @@ const gameData =
                                         yMax: 79
                                     },
                                     wizard: {
-                                        name: 'wizard'
+                                        name: 'wizard',
+                                        xMin: 65,
+                                        xMax: 67.4,
+                                        yMin: 76,
+                                        yMax: 79
                                     },
                                     odlaw: {
-                                        name: 'odlaw'
+                                        name: 'odlaw',
+                                        xMin: 58,
+                                        xMax: 59.5,
+                                        yMin: 94,
+                                        yMax: 98
                                     }
                                 }
                             ]
@@ -31,14 +42,3 @@ const gameData =
 
 
 export default gameData
-
-
-// {
-//     name: 'waldo',
-//     xMin: 80,
-//     xMax: 73,
-//     yMin: 42,
-//     yMax: 44
-// },
-// { name: 'wizard' },
-// { name: 'odlaw' }
