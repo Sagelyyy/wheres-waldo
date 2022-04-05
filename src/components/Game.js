@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "./Menu";
-import waldo from "../images/4B42MkD.jpeg"
+import waldo from "../images/easy.jpeg"
 
 const Game = (props) => {
 
@@ -8,14 +8,12 @@ const Game = (props) => {
         event.preventDefault();
     });
 
-    const [playing, setPlaying] = React.useState(false)
-
     return (
         <div>
-            {!playing ?
+            {!props.playing ?
                 <div>
                     <h1>Choose Your Difficulty!</h1>
-                    <img alt='find waldo' className='game--image--choose' onClick={() => setPlaying(true)} style={{ width: "25%" }} src={waldo} />
+                    <img alt='find waldo' className='game--image--choose' onClick={() => props.levelSetup('easy')} style={{ width: "25%" }} src={waldo} />
                 </div>
                     : 
                 <div>

@@ -1,23 +1,44 @@
-const winner =
-    [{
-        easy:
+const gameData =
+    [
         {
-            Name: 'Walldo',
-            xMin: 805,
-            xMax: 833,
-            yMin: 920,
-            yMax: 986
-        },
-        medium: {
-            Name: 'Walldo'
-        },
-        hard: {
-            Name: 'Walldo'
+            easy:
+                [
+                    {
+                        difficulty: 'easy',
+                        image: './images/easy.jpg',
+                        characters:
+                            [
+                                {
+                                    waldo: {
+                                        name: 'waldo',
+                                        xMin: 42,
+                                        xMax: 44,
+                                        yMin: 74,
+                                        yMax: 79
+                                    },
+                                    wizard: {
+                                        name: 'wizard'
+                                    },
+                                    odlaw: {
+                                        name: 'odlaw'
+                                    }
+                                }
+                            ]
+                    }
+                ]
         }
-    }]
+    ]
 
 
-export default winner
+export default gameData
 
 
-// const test = [{ easy: [{ image: './images/fuck.jpg', chratacters: [{ name: walldo }, { name: bunny }] }] }]
+// {
+//     name: 'waldo',
+//     xMin: 80,
+//     xMax: 73,
+//     yMin: 42,
+//     yMax: 44
+// },
+// { name: 'wizard' },
+// { name: 'odlaw' }

@@ -15,7 +15,6 @@ function App() {
       <nav style={style}>
         <div className='nav--links--container'>
           <Link className='nav--link' to="/">Home</Link> | {" "}
-          <Link className='nav--link' to="/game">Game</Link>
         </div>
       </nav>
       <Outlet />
