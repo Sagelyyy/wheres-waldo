@@ -62,7 +62,7 @@ const RouteSwitch = () => {
     const levelSetup= (difficulty) => {
         switch (difficulty) {
             case 'easy':
-                setLevel(gameData.map(data => data.easy[0]))
+                setLevel(gameData.map(data => data.easy))
                 setPlaying(true)
                 break;
             default:
@@ -70,6 +70,8 @@ const RouteSwitch = () => {
                 break;
         }
     }
+
+    console.log(level)
 
     return (
         <BrowserRouter>

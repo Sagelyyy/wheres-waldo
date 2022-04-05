@@ -15,7 +15,7 @@ const Menu = (props) => {
         border: '1px solid black'
     }
 
-    const characters = props.level[0].characters[0]
+    const characters = props.level.characters
     
     if (props.visible) {
         return (

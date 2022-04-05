@@ -1,4 +1,5 @@
 import easyLevel from "./images/easy.jpeg"
+import mediumLevel from './images/medium.jpeg'
 
 
 const gameData =
@@ -37,6 +38,26 @@ const gameData =
                             ]
                     }
                 ]
+        },
+        {
+            medium: [{
+                difficulty: 'medium',
+                image: mediumLevel,
+                characters:
+                    [
+                        {
+                            waldo: {
+                                name: 'waldo'
+                            },
+                            wizard: {
+                                name: 'wizard'
+                            },
+                            odlaw: {
+                                name: 'odlaw'
+                            }
+                        }
+                    ]
+            }]
         }
     ]
 
