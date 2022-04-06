@@ -15,14 +15,22 @@ const Menu = (props) => {
         border: '1px solid black'
     }
 
-    const characters = props.level.characters
+    // This only display the last character name for some reason?
+
+    const characters = props.level.map((data) => data.characters.map((char, i) => {
+        return(
+            <ul className="menu" style={menuStyle}>
+            <li className="menu--item">{char.name}</li>
+        </ul>
+        )
+    }))
     
     if (props.visible) {
         return (
             <ul className="menu" style={menuStyle}>
-                <li className="menu--item">{characters.waldo.name}</li>
-                <li className="menu--item">{characters.wizard.name}</li>
-                <li className="menu--item">{characters.odlaw.name}</li>
+            <li className="menu--item">Waldo</li>
+            <li className="menu--item">Wizard</li>
+            <li className="menu--item">Odlaw</li>
             </ul>
         )
     }
