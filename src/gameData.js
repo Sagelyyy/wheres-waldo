@@ -1,14 +1,14 @@
 import images from "./images/images"
 
-const imgData = images.map(data => data.image)
+const imgData = images.filter(data => data.image).map(img => img.image)
+console.log(imgData)
 
 
 //TODO: Find all the Waldo's and put in their correct coordiantes.
 
 const gameData =
-
-
-    [{
+    [
+        {
         index: 'easy',
         image: imgData[0],
         characters: [
@@ -17,21 +17,24 @@ const gameData =
                 xMin: 42,
                 xMax: 44,
                 yMin: 74,
-                yMax: 79
+                yMax: 79,
+                found: false
             },
             {
                 name: 'wizard',
                 xMin: 65,
                 xMax: 67.4,
                 yMin: 76,
-                yMax: 79
+                yMax: 79,
+                found: false
             },
             {
                 name: 'odlaw',
                 xMin: 58,
                 xMax: 59.5,
                 yMin: 94,
-                yMax: 98
+                yMax: 98,
+                found: false
             }
         ]
     },
@@ -41,24 +44,27 @@ const gameData =
         characters: [
             {
                 name: 'waldo',
-                xMin: 42,
-                xMax: 44,
-                yMin: 74,
-                yMax: 79
+                xMin: 0,
+                xMax: 5,
+                yMin: 0,
+                yMax: 5,
+                found: false
             },
             {
                 name: 'wizard',
                 xMin: 65,
                 xMax: 67.4,
                 yMin: 76,
-                yMax: 79
+                yMax: 79,
+                found: false
             },
             {
                 name: 'odlaw',
                 xMin: 58,
                 xMax: 59.5,
                 yMin: 94,
-                yMax: 98
+                yMax: 98,
+                found: false
             }
         ]
     },
@@ -71,21 +77,24 @@ const gameData =
                 xMin: 42,
                 xMax: 44,
                 yMin: 74,
-                yMax: 79
+                yMax: 79,
+                found: false
             },
             {
                 name: 'wizard',
                 xMin: 65,
                 xMax: 67.4,
                 yMin: 76,
-                yMax: 79
+                yMax: 79,
+                found: false
             },
             {
                 name: 'odlaw',
                 xMin: 58,
                 xMax: 59.5,
                 yMin: 94,
-                yMax: 98
+                yMax: 98,
+                found: false
             }
         ]
     },
@@ -98,21 +107,24 @@ const gameData =
                 xMin: 42,
                 xMax: 44,
                 yMin: 74,
-                yMax: 79
+                yMax: 79,
+                found: false
             },
             {
                 name: 'wizard',
                 xMin: 65,
                 xMax: 67.4,
                 yMin: 76,
-                yMax: 79
+                yMax: 79,
+                found: false
             },
             {
                 name: 'odlaw',
                 xMin: 58,
                 xMax: 59.5,
                 yMin: 94,
-                yMax: 98
+                yMax: 98,
+                found: false
             }
         ]
     },

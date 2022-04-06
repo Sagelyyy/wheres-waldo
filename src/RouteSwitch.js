@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import gameData from "./gameData.js";
 import Game from "./components/Game.js";
 import App from "./App.js";
+import avatarData from "./images/avatars.js";
 
 
 const RouteSwitch = () => {
@@ -13,7 +14,11 @@ const RouteSwitch = () => {
     const [visible, setVisible] = React.useState(false)
     const [playing, setPlaying] = React.useState(false)
     const [level, setLevel] = React.useState()
-    const [victory, setVictory] = React.useState()
+    const [found, setFound] = React.useState([
+        {index: 'waldo', image: avatarData[0], found: false},
+        {index: 'wizard', image: avatarData[1], found: false},
+        {index: 'odlaw', image: avatarData[2], found: false}
+    ])
 
     const clickHandler = (e) => {
         let htmlScroll = document.getElementsByTagName('html')[0].scrollTop
@@ -80,6 +85,20 @@ const RouteSwitch = () => {
                 console.log('something went wrong')
                 break;
         }
+        setupCharacters()
+    }
+
+    const setupCharacters = () => {
+        setFound([{
+            waldo: {image: avatarData[0], found: false},
+            wizard: {image: avatarData[1], found: false},
+            odlaw: {image: avatarData[2], found: false}
+        }])
+    }
+
+    console.log(found)
+    const checkWin = () => {
+
     }
 
     return (
@@ -92,6 +111,7 @@ const RouteSwitch = () => {
                         levelSetup={levelSetup}
                         playing={playing}
                         level={level}
+                        found={found}
 
                     />} />
                 </Route>
