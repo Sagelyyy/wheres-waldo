@@ -42,7 +42,7 @@ const RouteSwitch = () => {
     }
 
     const checkSelection = (x, y) => {
-        console.log(characters[0].waldo[0].xMin)
+        console.log(characters)
 
         // const wizard = level.map(data => data.characters.filter(char => char.name === 'wizard')).flat()
         // const odlaw = level.map(data => data.characters.filter(char => char.name === 'odlaw')).flat()
@@ -67,7 +67,6 @@ const RouteSwitch = () => {
         switch (difficulty) {
             case 'easy':
                 const waldo = gameData.filter(item => item.waldo).map(item => item.waldo.easy)
-                console.log(waldo)
                 setLevel(gameData[0].levels.filter(data => data.index === 'easy'))
                 setCharacters([{waldo: waldo}])
                 setPlaying(true)
