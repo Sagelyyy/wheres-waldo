@@ -1,8 +1,12 @@
 import React from "react";
 import Menu from "./Menu";
 import images from "../images/images";
+import gameData from "../gameData";
 
 const Game = (props) => {
+
+    const test = (gameData.filter(data => data.levels))
+    console.log(test.map(level => level.levels.map(img => img.image)))
 
 
     const imgIndex = images.map((data, j) => data.index)
