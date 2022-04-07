@@ -4,12 +4,22 @@ import images from "../images/images";
 import gameData from "../gameData";
 
 const Game = (props) => {
-
+    
+    const testIndex = gameData[0].levels.map(item => item.index)
     const test = (gameData.filter(data => data.levels))
-    console.log(test.map(level => level.levels.map(img => img.image)))
-
+    const testElements = test[0].levels.map((item, i) => {
+        return (
+            <img src={item.image}
+                key={i}
+                alt='find waldo'
+                className='game--image--choose'
+                onClick={() => props.levelSetup(testIndex[i])}
+                style={{ width: "40%" }} ></img>
+        )
+    })
 
     const imgIndex = images.map((data, j) => data.index)
+
     const imgElements = images.map((pic, i) => {
         return (
             <img src={pic.image}
@@ -28,9 +38,6 @@ const Game = (props) => {
         //     )
     })
 
-    console.log(avatars)
-
-
     document.addEventListener("contextmenu", (event) => {
         event.preventDefault();
     });
@@ -40,7 +47,7 @@ const Game = (props) => {
             {!props.playing ?
                 <div>
                     <h1>Choose Your Difficulty!</h1>
-                    {imgElements}
+                    {testElements}
                 </div>
                 :
                 <div>
