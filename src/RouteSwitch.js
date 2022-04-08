@@ -42,8 +42,12 @@ const RouteSwitch = () => {
     }
 
     const checkSelection = (x, y) => {
-        console.log(characters)
 
+        console.log(characters)
+        const waldo = characters.filter(item => item.waldo)
+        const flatWaldo = [].concat.apply([], waldo)
+        console.log(flatWaldo)
+   
         // const wizard = level.map(data => data.characters.filter(char => char.name === 'wizard')).flat()
         // const odlaw = level.map(data => data.characters.filter(char => char.name === 'odlaw')).flat()
         // if (x >= characters[0].waldo.xMin && x <= waldo[0].xMax) {
