@@ -2,31 +2,18 @@ import React from "react";
 import Menu from "./Menu";
 import images from "../images/images";
 import gameData from "../gameData";
+import levelData from "../levelData";
 
 const Game = (props) => {
-    
-    const testIndex = gameData[0].levels.map(item => item.index)
-    const test = (gameData.filter(data => data.levels))
-    const testElements = test[0].levels.map((item, i) => {
-        return (
-            <img src={item.image}
-                key={i}
-                alt='find waldo'
-                className='game--image--choose'
-                onClick={() => props.levelSetup(testIndex[i])}
-                style={{ width: "40%" }} ></img>
-        )
-    })
 
-    const imgIndex = images.map((data, j) => data.index)
-
+    const levelIndex = levelData.map(data => data.index)
     const imgElements = images.map((pic, i) => {
         return (
             <img src={pic.image}
                 key={i}
                 alt='find waldo'
                 className='game--image--choose'
-                onClick={() => props.levelSetup(imgIndex[i])}
+                onClick={() => props.levelSetup(levelIndex[i])}
                 style={{ width: "40%" }} ></img>
         )
     })
@@ -47,7 +34,7 @@ const Game = (props) => {
             {!props.playing ?
                 <div>
                     <h1>Choose Your Difficulty!</h1>
-                    {testElements}
+                    {imgElements}
                 </div>
                 :
                 <div>

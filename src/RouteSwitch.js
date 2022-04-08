@@ -4,6 +4,7 @@ import gameData from "./gameData.js";
 import Game from "./components/Game.js";
 import App from "./App.js";
 import avatarData from "./images/avatars.js";
+import levelData from "./levelData.js";
 
 
 const RouteSwitch = () => {
@@ -43,48 +44,45 @@ const RouteSwitch = () => {
 
     const checkSelection = (x, y) => {
 
-        console.log(characters)
-        const waldo = characters.filter(item => item.waldo)
-        const flatWaldo = [].concat.apply([], waldo)
-        console.log(flatWaldo)
-   
-        // const wizard = level.map(data => data.characters.filter(char => char.name === 'wizard')).flat()
-        // const odlaw = level.map(data => data.characters.filter(char => char.name === 'odlaw')).flat()
-        // if (x >= characters[0].waldo.xMin && x <= waldo[0].xMax) {
-        //     if (y >= waldo[0].yMin && y <= waldo[0].yMax) {
-        //         console.log('waldo!')
-        //     }
-        // }
-        // if (x >= wizard[0].xMin && x <= wizard[0].xMax) {
-        //     if (y >= wizard[0].yMin && y <= wizard[0].yMax) {
-        //         console.log('wizard!')
-        //     }
-        // }
-        // if (x >= odlaw[0].xMin && x <= odlaw[0].xMax) {
-        //     if (y >= odlaw[0].yMin && y <= odlaw[0].yMax) {
-        //         console.log('odlaw!')
-        //     }
-        // }
+        console.log( 'x: ' + x, 'y: ' + y)
+        
+        const waldo = characters.filter(item => item.index === 'waldo')
+        const wizard = characters.filter(item => item.index === 'wizard')
+        const odlaw = characters.filter(item => item.index === 'odlaw')
+        if (x >= waldo[0].xMin && x <= waldo[0].xMax) {
+            if (y >= waldo[0].yMin && y <= waldo[0].yMax) {
+            }
+        }
+        if (x >= wizard[0].xMin && x <= wizard[0].xMax) {
+            if (y >= wizard[0].yMin && y <= wizard[0].yMax) {
+                console.log('wizard!')
+            }
+        }
+        if (x >= odlaw[0].xMin && x <= odlaw[0].xMax) {
+            if (y >= odlaw[0].yMin && y <= odlaw[0].yMax) {
+                console.log('odlaw!')
+            }
+        }
     }
 
     const levelSetup = (difficulty) => {
         switch (difficulty) {
             case 'easy':
-                const waldo = gameData.filter(item => item.waldo).map(item => item.waldo.easy)
-                setLevel(gameData[0].levels.filter(data => data.index === 'easy'))
-                setCharacters([{waldo: waldo}])
+                const easyData = gameData.map(item => item.easy)
+                setLevel(levelData.filter(data => data.index === 'easy'))
+                setCharacters([...easyData])
                 setPlaying(true)
                 break;
             case 'medium':
-                setLevel(gameData[0].levels.filter(data => data.index === 'medium'))
+                setLevel(levelData.filter(data => data.index === 'medium'))
                 setPlaying(true)
                 break;
             case 'hard':
-                setLevel(gameData[0].levels.filter(data => data.index === 'hard'))
+                setLevel(levelData.filter(data => data.index === 'hard'))
                 setPlaying(true)
                 break;
             case 'insane':
-                setLevel(gameData[0].levels.filter(data => data.index === 'insane'))
+                setLevel(levelData.filter(data => data.index === 'insane'))
                 setPlaying(true)
                 break;
             default:
