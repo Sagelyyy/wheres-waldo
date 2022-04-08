@@ -25,3 +25,8 @@
   cursor: pointer;
   box-shadow: 4px 4px 8px black;
 }
+
+.game--avatars{
+  display: flex;
+  position: absolute;
+}

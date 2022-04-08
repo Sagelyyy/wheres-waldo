@@ -19,10 +19,9 @@ const Game = (props) => {
     })
 
     const avatars = props.found.map(data => {
-        return(data.image)
-        // return (
-        //     <img className="game--avatars" src={data.image}></img>
-        //     )
+        return(
+        <img className='game--avatars' src={data.image} />
+        )
     })
 
     document.addEventListener("contextmenu", (event) => {
@@ -38,7 +37,7 @@ const Game = (props) => {
                 </div>
                 :
                 <div>
-                    {/* {avatars} */}
+                    {avatars}
                     <img alt='find waldo' className='game--image' onMouseDown={props.clickHandler} style={{ width: "100%" }} src={props.level[0].image} />
                     <Menu level={props.level} coords={props.coords} visible={props.visible} />
                 </div>

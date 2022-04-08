@@ -51,6 +51,7 @@ const RouteSwitch = () => {
         const odlaw = characters.filter(item => item.index === 'odlaw')
         if (x >= waldo[0].xMin && x <= waldo[0].xMax) {
             if (y >= waldo[0].yMin && y <= waldo[0].yMax) {
+                console.log('waldo')
             }
         }
         if (x >= wizard[0].xMin && x <= wizard[0].xMax) {
@@ -65,6 +66,8 @@ const RouteSwitch = () => {
         }
     }
 
+    console.log(characters)
+
     const levelSetup = (difficulty) => {
         switch (difficulty) {
             case 'easy':
@@ -74,7 +77,9 @@ const RouteSwitch = () => {
                 setPlaying(true)
                 break;
             case 'medium':
+                const medData = gameData.map(item => item.medium)
                 setLevel(levelData.filter(data => data.index === 'medium'))
+                setCharacters([...medData])
                 setPlaying(true)
                 break;
             case 'hard':
@@ -93,11 +98,11 @@ const RouteSwitch = () => {
     }
 
     const setupCharacters = () => {
-        setFound([{
-            waldo: {image: avatarData[0], found: false},
-            wizard: {image: avatarData[1], found: false},
-            odlaw: {image: avatarData[2], found: false}
-        }])
+        setFound([
+            {index: 'waldo', image: avatarData[0], found: false},
+            {index: 'wizard', image: avatarData[1], found: false},
+            {index: 'odlaw', image: avatarData[2], found: false}
+        ])
     }
 
     const checkWin = () => {
