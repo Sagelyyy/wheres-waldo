@@ -18,10 +18,36 @@ const Game = (props) => {
         )
     })
 
-    const avatars = props.found.map(data => {
-        return(
-        <img className='game--avatars' src={data.image} />
-        )
+    const waldoFound = props.found.filter(item => item.index === 'waldo')
+    const wizardFound = props.found.filter(item => item.index === 'wizard')
+    const odlawFound = props.found.filter(item => item.index === 'odlaw')
+
+    const avatars = gameData.map((item, i) => {
+        // I dont like this. Need a better way
+        if (i === 0) {
+            return (
+                <div>
+                    {waldoFound[0].found ? <div className="game--avatar--overlay"> </div> : null}
+                    <img alt='waldo avatar' className="game--avatar" src={item.avatar} key={i} />
+                </div>
+            )
+        }
+        if (i === 1) {
+            return (
+                <div>
+                    {wizardFound[0].found ? <div className="game--avatar--overlay"> </div> : null}
+                    <img alt='wizard avatar' className="game--avatar" src={item.avatar} key={i} />
+                </div>
+            )
+        }
+        if (i === 2) {
+            return (
+                <div>
+                    {odlawFound[0].found ? <div className="game--avatar--overlay"> </div> : null}
+                    <img alt='odlaw avatar' className="game--avatar" src={item.avatar} key={i} />
+                </div>
+            )
+        }
     })
 
     document.addEventListener("contextmenu", (event) => {
@@ -33,13 +59,17 @@ const Game = (props) => {
             {!props.playing ?
                 <div>
                     <h1>Choose Your Difficulty!</h1>
-                    {imgElements}
+                    <div className="game--selection">
+                        {imgElements}
+                    </div>
                 </div>
                 :
                 <div>
-                    {avatars}
+                    <div className="game--avatars--container">
+                        {avatars}
+                    </div>
                     <img alt='find waldo' className='game--image' onMouseDown={props.clickHandler} style={{ width: "100%" }} src={props.level[0].image} />
-                    <Menu level={props.level} coords={props.coords} visible={props.visible} />
+                    <Menu level={props.level} coords={props.coords} visible={props.visible} checkSelection={props.checkSelection} screenPercent={props.screenPercent} />
                 </div>
             }
 

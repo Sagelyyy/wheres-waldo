@@ -18,9 +18,9 @@ const Menu = (props) => {
     if (props.visible) {
         return (
             <ul className="menu" style={menuStyle}>
-                <li className="menu--item">Waldo</li>
-                <li className="menu--item">Wizard</li>
-                <li className="menu--item">Odlaw</li>
+                <li onClick={() => props.checkSelection(props.screenPercent.x, props.screenPercent.y, 'waldo')} className="menu--item">Waldo</li>
+                <li onClick={() => props.checkSelection(props.screenPercent.x, props.screenPercent.y, 'wizard')} className="menu--item">Wizard</li>
+                <li onClick={() => props.checkSelection(props.screenPercent.x, props.screenPercent.y, 'odlaw')} className="menu--item">Odlaw</li>
             </ul>
         )
     }

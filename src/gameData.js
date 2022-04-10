@@ -67,7 +67,7 @@ const gameData =
             easy: {
                 index: 'odlaw',
                 xMin: 57,
-                xMax: 59,
+                xMax: 60,
                 yMin: 94,
                 yMax: 97,
             },
