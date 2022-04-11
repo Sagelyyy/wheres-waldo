@@ -43,11 +43,7 @@ const RouteSwitch = () => {
         setVisible(old => !old)
     }
 
-    console.log(found)
-
     const checkSelection = (x, y, character) => {
-
-        console.log( 'x: ' + x, 'y: ' + y)
         
         const waldo = characters.filter(item => item.index === 'waldo')
         const wizard = characters.filter(item => item.index === 'wizard')
@@ -83,6 +79,7 @@ const RouteSwitch = () => {
             }
         }
         setVisible(false)
+        checkWin()
     }
 
     const levelSetup = (difficulty) => {
@@ -123,7 +120,17 @@ const RouteSwitch = () => {
     }
 
     const checkWin = () => {
-
+        let win = false
+        for(let i = 0; i < found.length; i+=1){
+            if(found[i].found === true){
+                win = true
+            }else{
+                win = false
+            }
+        }
+        if(win === true){
+            console.log('winner')
+        }
     }
 
     return (
