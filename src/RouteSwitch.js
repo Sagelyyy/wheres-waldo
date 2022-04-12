@@ -41,9 +41,15 @@ const RouteSwitch = () => {
         setCoords({ x: e.clientX, y: e.clientY + htmlScroll })
 
         setVisible(old => !old)
+
+        console.log('x: ' + xPercent, 'y: ' + yPercent)
     }
 
+    console.log(characters)
+
     const checkSelection = (x, y, character) => {
+
+
         
         const waldo = characters.filter(item => item.index === 'waldo')
         const wizard = characters.filter(item => item.index === 'wizard')
@@ -83,6 +89,7 @@ const RouteSwitch = () => {
     }
 
     const levelSetup = (difficulty) => {
+        console.log(difficulty)
         switch (difficulty) {
             case 'easy':
                 const easyData = gameData.map(item => item.easy)
@@ -97,11 +104,15 @@ const RouteSwitch = () => {
                 setPlaying(true)
                 break;
             case 'hard':
+                const hardData = gameData.map(item => item.hard)
                 setLevel(levelData.filter(data => data.index === 'hard'))
+                setCharacters([...hardData])
                 setPlaying(true)
                 break;
             case 'insane':
+                const insaneData = gameData.map(item => item.insane)
                 setLevel(levelData.filter(data => data.index === 'insane'))
+                setCharacters([...insaneData])
                 setPlaying(true)
                 break;
             default:

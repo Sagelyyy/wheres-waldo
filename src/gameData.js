@@ -26,10 +26,18 @@ const gameData =
             },
             hard: {
                 index: 'waldo',
-                xMin: 42,
-                xMax: 44,
-                yMin: 74,
-                yMax: 79,
+                xMin: 55,
+                xMax: 58,
+                yMin: 33,
+                yMax: 38,
+                found: false
+            },
+            insane: {
+                index: 'waldo',
+                xMin: 55,
+                xMax: 58,
+                yMin: 33,
+                yMax: 38,
                 found: false
             }
         },
@@ -54,12 +62,20 @@ const gameData =
             },
             hard: {
                 index: 'wizard',
-                xMin: 65,
-                xMax: 67.4,
-                yMin: 76,
-                yMax: 79,
+                xMin: 84,
+                xMax: 87,
+                yMin: 82,
+                yMax: 90,
                 found: false
             },
+            insane: {
+                index: 'wizard',
+                xMin: 55,
+                xMax: 58,
+                yMin: 33,
+                yMax: 38,
+                found: false
+            }
         },
         {
             name: 'odlaw',
@@ -80,6 +96,18 @@ const gameData =
             },
             hard: {
                 index: 'odlaw',
+                xMin: 39,
+                xMax: 41,
+                yMin: 58,
+                yMax: 62,
+            },
+            insane: {
+                index: 'odlaw',
+                xMin: 55,
+                xMax: 58,
+                yMin: 33,
+                yMax: 38,
+                found: false
             }
         }
     ]
