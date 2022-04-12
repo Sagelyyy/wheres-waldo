@@ -5,6 +5,7 @@ import Game from "./components/Game.js";
 import App from "./App.js";
 import avatarData from "./images/avatars.js";
 import levelData from "./levelData.js";
+import Leaderboard from "./components/Leaderboard.js";
 
 
 const RouteSwitch = () => {
@@ -158,6 +159,7 @@ const RouteSwitch = () => {
                         screenPercent={screenPercent}
                         found={found}
                     />} />
+                    <Route path='/leaderboard' element={<Leaderboard />} />
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -1,5 +1,10 @@
 * { margin: 0; padding: 0;}
 
+.nav--links--container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 .menu--item{
   text-transform: capitalize;

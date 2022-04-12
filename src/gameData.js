@@ -1,7 +1,5 @@
 import avatarData from './images/avatars.js'
 
-//TODO: Find all the Waldo's and put in their correct coordiantes.
-
 const gameData =
 
     [
@@ -34,10 +32,10 @@ const gameData =
             },
             insane: {
                 index: 'waldo',
-                xMin: 55,
-                xMax: 58,
-                yMin: 33,
-                yMax: 38,
+                xMin: 16,
+                xMax: 17.5,
+                yMin: 84,
+                yMax: 86,
                 found: false
             }
         },
@@ -70,10 +68,10 @@ const gameData =
             },
             insane: {
                 index: 'wizard',
-                xMin: 55,
-                xMax: 58,
-                yMin: 33,
-                yMax: 38,
+                xMin: 28,
+                xMax: 29,
+                yMin: 13,
+                yMax: 15,
                 found: false
             }
         },
@@ -103,10 +101,10 @@ const gameData =
             },
             insane: {
                 index: 'odlaw',
-                xMin: 55,
-                xMax: 58,
-                yMin: 33,
-                yMax: 38,
+                xMin: 85,
+                xMax: 87,
+                yMin: 81,
+                yMax: 83,
                 found: false
             }
         }

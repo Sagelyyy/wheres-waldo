@@ -11,10 +11,10 @@ function App(props) {
   }
   return (
     <div className="App">
-      Navigation
       <nav style={style}>
         <div className='nav--links--container'>
-          <Link onClick={() => {props.setPlaying(false)}} className='nav--link' to="/">Home</Link> | {" "}
+          <Link onClick={() => {props.setPlaying(false)}} className='nav--link' to="/">Home</Link>
+          <Link to="/leaderboard">Leaderboard</Link>
         </div>
       </nav>
       <Outlet />
