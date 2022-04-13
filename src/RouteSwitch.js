@@ -6,12 +6,11 @@ import App from "./App.js";
 import avatarData from "./images/avatars.js";
 import levelData from "./levelData.js";
 import Leaderboard from "./components/Leaderboard.js";
+import firebaseApp from "./firebase.js";
+import { getFirestore, getDocs, collection, doc, setDoc, addDoc, deleteDoc, query, where } from "firebase/firestore";
 
 
 const RouteSwitch = () => {
-
-    // Going to be storing state in here, and passing it down to the different routes.
-
     const [coords, setCoords] = React.useState({ x: 0, y: 0 })
     const [screenPercent, setScreenpercent] = React.useState({ x: 0, y: 0 })
     const [visible, setVisible] = React.useState(false)
@@ -23,6 +22,23 @@ const RouteSwitch = () => {
         {index: 'wizard', image: avatarData[1], found: false},
         {index: 'odlaw', image: avatarData[2], found: false}
     ])
+
+
+    const db = getFirestore(firebaseApp)
+
+    const getData = async () => {
+        const querySnapshot = await getDocs(collection(db, `coordinates`));
+        const dbItems = []
+        querySnapshot.forEach((doc) => {
+          dbItems.push(doc.data())
+        });
+        console.log(dbItems)
+      }
+
+      React.useEffect(() => {
+          getData()
+      },[])
+
 
     const clickHandler = (e) => {
         let htmlScroll = document.getElementsByTagName('html')[0].scrollTop

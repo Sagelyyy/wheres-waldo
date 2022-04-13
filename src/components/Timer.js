@@ -8,7 +8,6 @@ const Timer = (props) => {
     React.useEffect(() => {
         startTimer()
         return () => {
-            console.log('cleaning up!')
             clearInterval(increment.current)
         }
     },[])
