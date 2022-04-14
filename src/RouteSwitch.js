@@ -26,6 +26,15 @@ const RouteSwitch = () => {
 
     const db = getFirestore(firebaseApp)
 
+    const getScoreData = async () => {
+        const dbItems = []
+        const querySnapshot = await getDocs(collection(db, 'users'));
+        querySnapshot.forEach((doc) => {
+            dbItems.push(doc.data())
+        });
+        console.log(dbItems.map(item => item.score))
+    }
+
     const getCoordData = async (difficulty) => {
         const names = ['waldo', 'wizard', 'odlaw']
         const dbItems = []
@@ -39,8 +48,8 @@ const RouteSwitch = () => {
     }
 
     React.useEffect(() => {
-        // getCoordData('easy')
-        // .then(data => {console.log(data)})
+        getScoreData()
+        .then(data => console.log(data))
     }, [])
 
 
@@ -110,30 +119,21 @@ const RouteSwitch = () => {
     }
 
     const levelSetup = (difficulty) => {
+        getCoordData(difficulty)
+        .then (data => setCharacters(data))
+        setPlaying(true)
         switch (difficulty) {
             case 'easy':
-                getCoordData(difficulty)
-                .then (data => setCharacters(data))
-                setLevel(levelData.filter(data => data.index === 'easy'))
-                setPlaying(true)
+                setLevel(levelData.filter(data => data.index === difficulty))
                 break;
             case 'medium':
-                getCoordData(difficulty)
-                .then (data => setCharacters(data))
-                setLevel(levelData.filter(data => data.index === 'medium'))
-                setPlaying(true)
+                setLevel(levelData.filter(data => data.index === difficulty))
                 break;
             case 'hard':
-                getCoordData(difficulty)
-                .then (data => setCharacters(data))
-                setLevel(levelData.filter(data => data.index === 'hard'))
-                setPlaying(true)
+                setLevel(levelData.filter(data => data.index === difficulty))
                 break;
             case 'insane':
-                getCoordData(difficulty)
-                .then (data => setCharacters(data))
-                setLevel(levelData.filter(data => data.index === 'insane'))
-                setPlaying(true)
+                setLevel(levelData.filter(data => data.index === difficulty))
                 break;
             default:
                 console.log('something went wrong')
