@@ -18,26 +18,30 @@ const RouteSwitch = () => {
     const [characters, setCharacters] = React.useState([])
     const [level, setLevel] = React.useState()
     const [found, setFound] = React.useState([
-        {index: 'waldo', image: avatarData[0], found: false},
-        {index: 'wizard', image: avatarData[1], found: false},
-        {index: 'odlaw', image: avatarData[2], found: false}
+        { index: 'waldo', image: avatarData[0], found: false },
+        { index: 'wizard', image: avatarData[1], found: false },
+        { index: 'odlaw', image: avatarData[2], found: false }
     ])
 
 
     const db = getFirestore(firebaseApp)
 
-    const getData = async () => {
-        const querySnapshot = await getDocs(collection(db, `coordinates`));
+    const getCoordData = async (difficulty) => {
+        const names = ['waldo', 'wizard', 'odlaw']
         const dbItems = []
-        querySnapshot.forEach((doc) => {
-          dbItems.push(doc.data())
-        });
-        console.log(dbItems)
-      }
+        for (let i = 0; i < names.length; i += 1) {
+            const querySnapshot = await getDocs(collection(db, `coordinates`, difficulty, names[i]));
+            querySnapshot.forEach((doc) => {
+                dbItems.push(doc.data())
+            });
+        }
+        return dbItems
+    }
 
-      React.useEffect(() => {
-          getData()
-      },[])
+    React.useEffect(() => {
+        // getCoordData('easy')
+        // .then(data => {console.log(data)})
+    }, [])
 
 
     const clickHandler = (e) => {
@@ -46,7 +50,7 @@ const RouteSwitch = () => {
         let screenHeight = document.documentElement.clientHeight
         let xPercent = (e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100
         let yPercent = (e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100
-        setScreenpercent({x: xPercent, y: yPercent})
+        setScreenpercent({ x: xPercent, y: yPercent })
 
         if (e.clientY > screenHeight - 50) {
             e.clientY -= 50
@@ -67,13 +71,13 @@ const RouteSwitch = () => {
     const checkSelection = (x, y, character) => {
 
 
-        
+
         const waldo = characters.filter(item => item.index === 'waldo')
         const wizard = characters.filter(item => item.index === 'wizard')
         const odlaw = characters.filter(item => item.index === 'odlaw')
         if (x >= waldo[0].xMin && x <= waldo[0].xMax) {
             if (y >= waldo[0].yMin && y <= waldo[0].yMax) {
-                if(character === 'waldo'){
+                if (character === 'waldo') {
                     const arr = found.slice()
                     const charIndex = arr.findIndex(i => i.index === character)
                     arr[charIndex].found = true
@@ -83,7 +87,7 @@ const RouteSwitch = () => {
         }
         if (x >= wizard[0].xMin && x <= wizard[0].xMax) {
             if (y >= wizard[0].yMin && y <= wizard[0].yMax) {
-                if(character === 'wizard'){
+                if (character === 'wizard') {
                     const arr = found.slice()
                     const charIndex = arr.findIndex(i => i.index === character)
                     arr[charIndex].found = true
@@ -93,7 +97,7 @@ const RouteSwitch = () => {
         }
         if (x >= odlaw[0].xMin && x <= odlaw[0].xMax) {
             if (y >= odlaw[0].yMin && y <= odlaw[0].yMax) {
-                if(character === 'odlaw'){
+                if (character === 'odlaw') {
                     const arr = found.slice()
                     const charIndex = arr.findIndex(i => i.index === character)
                     arr[charIndex].found = true
@@ -106,30 +110,29 @@ const RouteSwitch = () => {
     }
 
     const levelSetup = (difficulty) => {
-        console.log(difficulty)
         switch (difficulty) {
             case 'easy':
-                const easyData = gameData.map(item => item.easy)
+                getCoordData(difficulty)
+                .then (data => setCharacters(data))
                 setLevel(levelData.filter(data => data.index === 'easy'))
-                setCharacters([...easyData])
                 setPlaying(true)
                 break;
             case 'medium':
-                const medData = gameData.map(item => item.medium)
+                getCoordData(difficulty)
+                .then (data => setCharacters(data))
                 setLevel(levelData.filter(data => data.index === 'medium'))
-                setCharacters([...medData])
                 setPlaying(true)
                 break;
             case 'hard':
-                const hardData = gameData.map(item => item.hard)
+                getCoordData(difficulty)
+                .then (data => setCharacters(data))
                 setLevel(levelData.filter(data => data.index === 'hard'))
-                setCharacters([...hardData])
                 setPlaying(true)
                 break;
             case 'insane':
-                const insaneData = gameData.map(item => item.insane)
+                getCoordData(difficulty)
+                .then (data => setCharacters(data))
                 setLevel(levelData.filter(data => data.index === 'insane'))
-                setCharacters([...insaneData])
                 setPlaying(true)
                 break;
             default:
@@ -141,22 +144,22 @@ const RouteSwitch = () => {
 
     const setupCharacters = () => {
         setFound([
-            {index: 'waldo', image: avatarData[0], found: false},
-            {index: 'wizard', image: avatarData[1], found: false},
-            {index: 'odlaw', image: avatarData[2], found: false}
+            { index: 'waldo', image: avatarData[0], found: false },
+            { index: 'wizard', image: avatarData[1], found: false },
+            { index: 'odlaw', image: avatarData[2], found: false }
         ])
     }
 
     const checkWin = () => {
         let win = false
-        for(let i = 0; i < found.length; i+=1){
-            if(found[i].found === true){
+        for (let i = 0; i < found.length; i += 1) {
+            if (found[i].found === true) {
                 win = true
-            }else{
+            } else {
                 win = false
             }
         }
-        if(win === true){
+        if (win === true) {
             console.log('winner')
         }
     }
