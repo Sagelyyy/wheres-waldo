@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useRef } from "react";
 import Menu from "./Menu";
 import images from "../images/images";
 import gameData from "../gameData";
 import levelData from "../levelData";
 import Timer from "./Timer";
+import LeaderboardModal from "./LeaderboardModal";
 
 const Game = (props) => {
+
+    const imageRef = useRef(null)
+    
+    const [modalStyle, setModalStyle] = React.useState(0)
+    const [showModal, setShowModal] = React.useState(true)
+
+    React.useEffect(() => {
+        const mHeight = imageRef.current?.getBoundingClientRect().height
+        const mTop = imageRef.current?.getBoundingClientRect().top
+        const style = {
+            height: mHeight,
+            top: mTop
+        }
+        setModalStyle(style)
+    },[imageRef.current])
 
     const levelIndex = levelData.map(data => data.index)
     const imgElements = images.map((pic, i) => {
@@ -66,12 +82,13 @@ const Game = (props) => {
                 </div>
                 :
                 <div>
+                    {showModal ? <LeaderboardModal modalStyle={modalStyle} /> : null}
                     <div className="game--avatars--container">
                         {avatars}
                         <Timer playing={props.playing} win={props.win} />
                     </div>
-                    <img alt='find waldo' className='game--image' onMouseDown={props.clickHandler} style={{ width: "100%" }} src={props.level[0].image} />
-                    <Menu level={props.level} coords={props.coords} visible={props.visible} checkSelection={props.checkSelection} screenPercent={props.screenPercent} />
+                    <img ref={imageRef} alt='find waldo' className='game--image' onMouseDown={props.clickHandler} src={props.level[0].image} />
+                    <Menu level={props.level} coords={props.coords} showMenu={props.showMenu} checkSelection={props.checkSelection} screenPercent={props.screenPercent} />
                 </div>
             }
 

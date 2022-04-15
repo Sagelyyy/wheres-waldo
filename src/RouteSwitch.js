@@ -13,7 +13,7 @@ import { getFirestore, getDocs, collection, doc, setDoc, addDoc, deleteDoc, quer
 const RouteSwitch = () => {
     const [coords, setCoords] = React.useState({ x: 0, y: 0 })
     const [screenPercent, setScreenpercent] = React.useState({ x: 0, y: 0 })
-    const [visible, setVisible] = React.useState(false)
+    const [showMenu, setShowMenu] = React.useState(false)
     const [playing, setPlaying] = React.useState(false)
     const [characters, setCharacters] = React.useState([])
     const [level, setLevel] = React.useState()
@@ -71,7 +71,7 @@ const RouteSwitch = () => {
 
         setCoords({ x: e.clientX, y: e.clientY + htmlScroll })
 
-        setVisible(old => !old)
+        setShowMenu(old => !old)
 
         console.log('x: ' + xPercent, 'y: ' + yPercent)
     }
@@ -115,7 +115,7 @@ const RouteSwitch = () => {
                 }
             }
         }
-        setVisible(false)
+        setShowMenu(false)
         checkWin()
     }
 
@@ -172,7 +172,8 @@ const RouteSwitch = () => {
                 <Route path="/" element={<App playing={playing} setPlaying={setPlaying} />}>
                     <Route path="/" element={<Game
                         clickHandler={clickHandler}
-                        coords={coords} visible={visible}
+                        coords={coords} 
+                        showMenu={setShowMenu}
                         levelSetup={levelSetup}
                         playing={playing}
                         level={level}

@@ -15,7 +15,7 @@ const Menu = (props) => {
         border: '1px solid black'
     }
 
-    if (props.visible) {
+    if (props.showMenu) {
         return (
             <ul className="menu" style={menuStyle}>
                 <li onClick={() => props.checkSelection(props.screenPercent.x, props.screenPercent.y, 'waldo')} className="menu--item">Waldo</li>
