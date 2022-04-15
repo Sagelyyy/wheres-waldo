@@ -68,7 +68,7 @@ const Game = (props) => {
                 <div>
                     <div className="game--avatars--container">
                         {avatars}
-                        <Timer playing={props.playing} />
+                        <Timer playing={props.playing} win={props.win} />
                     </div>
                     <img alt='find waldo' className='game--image' onMouseDown={props.clickHandler} style={{ width: "100%" }} src={props.level[0].image} />
                     <Menu level={props.level} coords={props.coords} visible={props.visible} checkSelection={props.checkSelection} screenPercent={props.screenPercent} />

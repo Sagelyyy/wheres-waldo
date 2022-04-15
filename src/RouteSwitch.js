@@ -22,6 +22,7 @@ const RouteSwitch = () => {
         { index: 'wizard', image: avatarData[1], found: false },
         { index: 'odlaw', image: avatarData[2], found: false }
     ])
+    const [win, setWin] = React.useState(false)
 
 
     const db = getFirestore(firebaseApp)
@@ -48,8 +49,8 @@ const RouteSwitch = () => {
     }
 
     React.useEffect(() => {
-        getScoreData()
-        .then(data => console.log(data))
+        // getScoreData()
+        // .then(data => console.log(data))
     }, [])
 
 
@@ -122,6 +123,7 @@ const RouteSwitch = () => {
         getCoordData(difficulty)
         .then (data => setCharacters(data))
         setPlaying(true)
+        setWin(false)
         switch (difficulty) {
             case 'easy':
                 setLevel(levelData.filter(data => data.index === difficulty))
@@ -160,7 +162,7 @@ const RouteSwitch = () => {
             }
         }
         if (win === true) {
-            console.log('winner')
+            setWin(true)
         }
     }
 
@@ -177,6 +179,7 @@ const RouteSwitch = () => {
                         checkSelection={checkSelection}
                         screenPercent={screenPercent}
                         found={found}
+                        win={win}
                     />} />
                     <Route path='/leaderboard' element={<Leaderboard />} />
                 </Route>
