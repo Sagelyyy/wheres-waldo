@@ -146,6 +146,8 @@ const RouteSwitch = () => {
     }
 
     const checkWin = () => {
+
+        // need to re write this.
         let win = false
         for (let i = 0; i < found.length; i += 1) {
             if (found[i].found === true) {
@@ -159,6 +161,21 @@ const RouteSwitch = () => {
             setShowModal(true)
         }
     }
+
+    const resetGame = () => {
+        setWin(false)
+        setPlaying(false)
+        setCharacters([])
+        setLevel(null)
+        setShowModal(false)
+        setFound([
+            { index: 'waldo', image: avatarData[0], found: false },
+            { index: 'wizard', image: avatarData[1], found: false },
+            { index: 'odlaw', image: avatarData[2], found: false }
+        ])
+    }
+
+    console.log(showModal)
 
     return (
         <BrowserRouter>
@@ -176,6 +193,7 @@ const RouteSwitch = () => {
                         found={found}
                         win={win}
                         showModal={showModal}
+                        resetGame={resetGame}
                     />} />
                     <Route path='/leaderboard' element={<Leaderboard />} />
                 </Route>

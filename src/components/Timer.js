@@ -11,6 +11,7 @@ const Timer = (props) => {
 
 
     React.useEffect(() => {
+        console.log('timer useeffect')
         if (props.win) {
             stopTimer()
             props.setUserData(old => {

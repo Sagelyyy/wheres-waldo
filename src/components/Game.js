@@ -21,6 +21,7 @@ const Game = (props) => {
             top: mTop
         }
         setModalStyle(style)
+        console.log('game useeffect')
     }, [imageRef.current])
 
     const levelIndex = levelData.map(data => data.index)
@@ -82,7 +83,7 @@ const Game = (props) => {
                 </div>
                 :
                 <div>
-                    {props.showModal ? <LeaderboardModal setUserData={setUserData} userData={userData} modalStyle={modalStyle} /> : null}
+                    {props.showModal ? <LeaderboardModal resetGame={props.resetGame} setUserData={setUserData} userData={userData} modalStyle={modalStyle} /> : null}
                     <div className="game--avatars--container">
                         {avatars}
                         <Timer userData={userData} setUserData={setUserData} playing={props.playing} win={props.win} />
