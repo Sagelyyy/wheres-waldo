@@ -17,6 +17,7 @@ const LeaderboardModal = (props) => {
     }
 
     const modalHandler = async (event) => {
+        // can we use the submit button to route back to the home page?
         event.preventDefault()
         const docRef = await setDoc(doc(db, "users", 'test'), props.userData);
     }
