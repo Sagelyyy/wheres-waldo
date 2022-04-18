@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import gameData from "./gameData.js";
 import Game from "./components/Game.js";
 import App from "./App.js";
 import avatarData from "./images/avatars.js";
@@ -11,6 +10,7 @@ import { getFirestore, getDocs, collection, doc, setDoc, addDoc, deleteDoc, quer
 
 
 const RouteSwitch = () => {
+    const [showModal, setShowModal] = React.useState(false)
     const [coords, setCoords] = React.useState({ x: 0, y: 0 })
     const [screenPercent, setScreenpercent] = React.useState({ x: 0, y: 0 })
     const [showMenu, setShowMenu] = React.useState(false)
@@ -37,6 +37,7 @@ const RouteSwitch = () => {
     }
 
     const getCoordData = async (difficulty) => {
+        // I dont like how this works
         const names = ['waldo', 'wizard', 'odlaw']
         const dbItems = []
         for (let i = 0; i < names.length; i += 1) {
@@ -70,18 +71,10 @@ const RouteSwitch = () => {
         }
 
         setCoords({ x: e.clientX, y: e.clientY + htmlScroll })
-
         setShowMenu(old => !old)
-
-        console.log('x: ' + xPercent, 'y: ' + yPercent)
     }
 
-    console.log(characters)
-
     const checkSelection = (x, y, character) => {
-
-
-
         const waldo = characters.filter(item => item.index === 'waldo')
         const wizard = characters.filter(item => item.index === 'wizard')
         const odlaw = characters.filter(item => item.index === 'odlaw')
@@ -163,6 +156,7 @@ const RouteSwitch = () => {
         }
         if (win === true) {
             setWin(true)
+            setShowModal(true)
         }
     }
 
@@ -173,7 +167,7 @@ const RouteSwitch = () => {
                     <Route path="/" element={<Game
                         clickHandler={clickHandler}
                         coords={coords} 
-                        showMenu={setShowMenu}
+                        showMenu={showMenu}
                         levelSetup={levelSetup}
                         playing={playing}
                         level={level}
@@ -181,6 +175,7 @@ const RouteSwitch = () => {
                         screenPercent={screenPercent}
                         found={found}
                         win={win}
+                        showModal={showModal}
                     />} />
                     <Route path='/leaderboard' element={<Leaderboard />} />
                 </Route>
