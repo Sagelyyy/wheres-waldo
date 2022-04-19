@@ -11,7 +11,7 @@ const Game = (props) => {
     const imageRef = useRef(null)
 
     const [modalStyle, setModalStyle] = React.useState(0)
-    const [userData, setUserData] = React.useState({username: '', time: ''})
+
 
     React.useEffect(() => {
         const mHeight = imageRef.current?.getBoundingClientRect().height
@@ -21,7 +21,6 @@ const Game = (props) => {
             top: mTop
         }
         setModalStyle(style)
-        console.log('game useeffect')
     }, [imageRef.current])
 
     const levelIndex = levelData.map(data => data.index)
@@ -83,10 +82,10 @@ const Game = (props) => {
                 </div>
                 :
                 <div>
-                    {props.showModal ? <LeaderboardModal resetGame={props.resetGame} setUserData={setUserData} userData={userData} modalStyle={modalStyle} /> : null}
+                    {props.showModal ? <LeaderboardModal resetGame={props.resetGame} setUserData={props.setUserData} userData={props.userData} modalStyle={modalStyle} /> : null}
                     <div className="game--avatars--container">
                         {avatars}
-                        <Timer userData={userData} setUserData={setUserData} playing={props.playing} win={props.win} />
+                        <Timer userData={props.userData} setUserData={props.setUserData} playing={props.playing} win={props.win} />
                     </div>
                     <img ref={imageRef} alt='find waldo' className='game--image' onMouseDown={props.clickHandler} src={props.level[0].image} />
                     <Menu level={props.level} coords={props.coords} showMenu={props.showMenu} checkSelection={props.checkSelection} screenPercent={props.screenPercent} />

@@ -1,8 +1,6 @@
 import React from "react";
 import { getFirestore, getDocs, collection, doc, setDoc, addDoc, deleteDoc, query, where } from "firebase/firestore";
 import firebaseApp from "../firebase.js";
-import { Navigate } from "react-router-dom";
-import Game from "./Game.js";
 
 const LeaderboardModal = (props) => {
 
@@ -21,7 +19,6 @@ const LeaderboardModal = (props) => {
     }
 
     const modalHandler = async (event) => {
-        // can we use the submit button to route back to the home page?
         event.preventDefault()
         const docRef = await setDoc(doc(db, "users", 'test'), props.userData);
         setSubmitted(true)
@@ -35,7 +32,7 @@ const LeaderboardModal = (props) => {
 
     return (
         <div>
-            <div style={props.modalStyle} className="modal--overlay">        </div>
+            <div style={props.modalStyle} className="modal--overlay"><h3>You Win!</h3></div>
             <div className="modal--container">
                 <div className="modal--header"></div>
                 <div className="modal--content">

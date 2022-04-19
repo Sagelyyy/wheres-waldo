@@ -23,6 +23,7 @@ const RouteSwitch = () => {
         { index: 'odlaw', image: avatarData[2], found: false }
     ])
     const [win, setWin] = React.useState(false)
+    const [userData, setUserData] = React.useState({username: '', time: ''})
 
 
     const db = getFirestore(firebaseApp)
@@ -146,20 +147,13 @@ const RouteSwitch = () => {
     }
 
     const checkWin = () => {
-
-        // need to re write this.
-        let win = false
-        for (let i = 0; i < found.length; i += 1) {
-            if (found[i].found === true) {
-                win = true
-            } else {
-                win = false
-            }
-        }
-        if (win === true) {
+        const checkIfSame = found.every(elem => elem.found === true)
+        if(checkIfSame){
+            console.log('win')
             setWin(true)
             setShowModal(true)
         }
+        console.log(found)
     }
 
     const resetGame = () => {
@@ -173,6 +167,7 @@ const RouteSwitch = () => {
             { index: 'wizard', image: avatarData[1], found: false },
             { index: 'odlaw', image: avatarData[2], found: false }
         ])
+        setUserData({username: '', time: ''})
     }
 
     console.log(showModal)
@@ -183,6 +178,8 @@ const RouteSwitch = () => {
                 <Route path="/" element={<App playing={playing} setPlaying={setPlaying} />}>
                     <Route path="/" element={<Game
                         clickHandler={clickHandler}
+                        userData={userData}
+                        setUserData={setUserData}
                         coords={coords} 
                         showMenu={showMenu}
                         levelSetup={levelSetup}
