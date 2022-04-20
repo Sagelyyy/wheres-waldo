@@ -28,15 +28,6 @@ const RouteSwitch = () => {
 
     const db = getFirestore(firebaseApp)
 
-    const getScoreData = async () => {
-        const dbItems = []
-        const querySnapshot = await getDocs(collection(db, 'users'));
-        querySnapshot.forEach((doc) => {
-            dbItems.push(doc.data())
-        });
-        console.log(dbItems.map(item => item.score))
-    }
-
     const getCoordData = async (difficulty) => {
         // I dont like how this works
         const names = ['waldo', 'wizard', 'odlaw']

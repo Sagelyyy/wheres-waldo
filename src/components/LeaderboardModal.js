@@ -20,7 +20,7 @@ const LeaderboardModal = (props) => {
 
     const modalHandler = async (event) => {
         event.preventDefault()
-        const docRef = await setDoc(doc(db, "users", 'test'), props.userData);
+        const docRef = await addDoc(collection(db, "users"), props.userData);
         setSubmitted(true)
         setTimeout(() => {
             props.resetGame()
@@ -43,7 +43,7 @@ const LeaderboardModal = (props) => {
                     />
                 </div>
                 <div className="modal--footer">
-                    {!submitted ? <button onClick={modalHandler}>Submit</button> : null} 
+                    {!submitted ? <button onClick={modalHandler}>Submit</button> : null}
                     {submitted && <h6>Now Redireting you home, thanks for submitting!</h6>}
                 </div>
             </div>
