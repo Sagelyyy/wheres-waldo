@@ -13,8 +13,8 @@ function App(props) {
     <div className="App">
       <nav style={style}>
         <div className='nav--links--container'>
-          <Link onClick={() => {props.setPlaying(false)}} className='nav--link' to="/">Home</Link>
-          <Link to="/leaderboard">Leaderboard</Link>
+          <Link onClick={props.resetGame} className='nav--link' to="/">Home</Link>
+          <Link onClick={props.resetGame} to="/leaderboard">Leaderboard</Link>
         </div>
       </nav>
       <Outlet />

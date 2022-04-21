@@ -43,7 +43,7 @@ const Game = (props) => {
         // I dont like this. Need a better way
         if (i === 0) {
             return (
-                <div>
+                <div key={i}>
                     {waldoFound[0].found ? <div className="game--avatar--overlay"> </div> : null}
                     <img alt='waldo avatar' className="game--avatar" src={item.avatar} key={i} />
                 </div>
@@ -51,7 +51,7 @@ const Game = (props) => {
         }
         if (i === 1) {
             return (
-                <div>
+                <div key={i}>
                     {wizardFound[0].found ? <div className="game--avatar--overlay"> </div> : null}
                     <img alt='wizard avatar' className="game--avatar" src={item.avatar} key={i} />
                 </div>
@@ -59,7 +59,7 @@ const Game = (props) => {
         }
         if (i === 2) {
             return (
-                <div>
+                <div key={i}>
                     {odlawFound[0].found ? <div className="game--avatar--overlay"> </div> : null}
                     <img alt='odlaw avatar' className="game--avatar" src={item.avatar} key={i} />
                 </div>
@@ -82,7 +82,7 @@ const Game = (props) => {
                 </div>
                 :
                 <div>
-                    {props.showModal ? <LeaderboardModal resetGame={props.resetGame} setUserData={props.setUserData} userData={props.userData} modalStyle={modalStyle} /> : null}
+                    {props.showModal ? <LeaderboardModal difficultySelection={props.difficultySelection} resetGame={props.resetGame} setUserData={props.setUserData} userData={props.userData} modalStyle={modalStyle} /> : null}
                     <div className="game--avatars--container">
                         {avatars}
                         <Timer userData={props.userData} setUserData={props.setUserData} playing={props.playing} win={props.win} />

@@ -20,15 +20,13 @@ const LeaderboardModal = (props) => {
 
     const modalHandler = async (event) => {
         event.preventDefault()
-        const docRef = await addDoc(collection(db, "users"), props.userData);
+        const docRef = await addDoc(collection(db, "users", "difficulties", props.difficultySelection), props.userData);
         setSubmitted(true)
         setTimeout(() => {
             props.resetGame()
             setSubmitted(false)
         }, 2000)
     }
-
-    console.log(props.userData)
 
     return (
         <div>

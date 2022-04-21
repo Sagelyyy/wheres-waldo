@@ -24,6 +24,7 @@ const RouteSwitch = () => {
     ])
     const [win, setWin] = React.useState(false)
     const [userData, setUserData] = React.useState({username: '', time: ''})
+    const [difficultySelection, setDifficultySelection] = React.useState()
 
 
     const db = getFirestore(firebaseApp)
@@ -112,15 +113,19 @@ const RouteSwitch = () => {
         switch (difficulty) {
             case 'easy':
                 setLevel(levelData.filter(data => data.index === difficulty))
+                setDifficultySelection(difficulty)
                 break;
             case 'medium':
                 setLevel(levelData.filter(data => data.index === difficulty))
+                setDifficultySelection(difficulty)
                 break;
             case 'hard':
                 setLevel(levelData.filter(data => data.index === difficulty))
+                setDifficultySelection(difficulty)
                 break;
             case 'insane':
                 setLevel(levelData.filter(data => data.index === difficulty))
+                setDifficultySelection(difficulty)
                 break;
             default:
                 console.log('something went wrong')
@@ -140,11 +145,9 @@ const RouteSwitch = () => {
     const checkWin = () => {
         const checkIfSame = found.every(elem => elem.found === true)
         if(checkIfSame){
-            console.log('win')
             setWin(true)
             setShowModal(true)
         }
-        console.log(found)
     }
 
     const resetGame = () => {
@@ -159,14 +162,13 @@ const RouteSwitch = () => {
             { index: 'odlaw', image: avatarData[2], found: false }
         ])
         setUserData({username: '', time: ''})
+        setDifficultySelection('')
     }
-
-    console.log(showModal)
 
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<App playing={playing} setPlaying={setPlaying} />}>
+                <Route path="/" element={<App resetGame={resetGame} />}>
                     <Route path="/" element={<Game
                         clickHandler={clickHandler}
                         userData={userData}
@@ -182,8 +184,9 @@ const RouteSwitch = () => {
                         win={win}
                         showModal={showModal}
                         resetGame={resetGame}
+                        difficultySelection={difficultySelection}
                     />} />
-                    <Route path='/leaderboard' element={<Leaderboard />} />
+                    <Route path='/leaderboard' element={<Leaderboard difficultySelection={difficultySelection} setDifficultySelection={setDifficultySelection}/>} />
                 </Route>
             </Routes>
         </BrowserRouter>
