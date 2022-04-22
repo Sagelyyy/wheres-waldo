@@ -59,7 +59,7 @@ const Leaderboard = (props) => {
     return (
         <div>
             {!props.difficultySelection && <h1>Choose which Leaderboard</h1>}
-            {props.difficultySelection ? leaderboardElements : <div className="game--selection">{selectionElements}</div>}
+            {props.difficultySelection ? leaderboardElements : selectionElements}
         </div>
     )
 }

@@ -120,28 +120,32 @@
 
 .leaderboard--item--container{
   position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .hover--text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
   opacity: 0;
-  width: inherit;
-  height: inherit;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   font-size: 18px;
   z-index: 4;
+  background-color: black;
+  width: 40%;
+  height: 100%;
+  transition: opacity .2s, visibility .2s;
 }
 
-.leaderboard--item--container + .hover--text:hover{
-  opacity: 1;
-  width: inherit;
-  height: inherit;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 18px;
+.leaderboard--item--container:hover .hover--text{
+  opacity: 0.5;
   z-index: 4;
 }
