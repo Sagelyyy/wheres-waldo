@@ -120,32 +120,36 @@
 
 .leaderboard--item--container{
   position: relative;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.hover--text{
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 50%;
+}
+
+.hover--text{
+  align-self: center;
+  text-align: center;
+  margin: 0 auto;
   color: #fff;
   opacity: 0;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  font-size: 18px;
+  font-size: 4vw;
   z-index: 4;
   background-color: black;
-  width: 40%;
+  width: 60%;
   height: 100%;
   transition: opacity .2s, visibility .2s;
+  cursor: pointer;
 }
 
 .leaderboard--item--container:hover .hover--text{
   opacity: 0.5;
   z-index: 4;
+}
+
+.level--images{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex: 1 1 calc(10% - 20px);
 }

@@ -25,13 +25,17 @@ const Game = (props) => {
 
     const levelIndex = levelData.map(data => data.index)
     const imgElements = images.map((pic, i) => {
+        const difficulties = ['Easy', 'Medium', 'Hard', 'Insane']
         return (
-            <img src={pic.image}
-                key={i}
-                alt='find waldo'
-                className='game--image--choose'
-                onClick={() => props.levelSetup(levelIndex[i])}
-                style={{ width: "40%" }} ></img>
+            <div className="leaderboard--item--container">
+                <div className="hover--text" onClick={() => props.levelSetup(levelIndex[i])}><p>{difficulties[i]}</p></div>
+                <img src={pic.image}
+                    key={i}
+                    alt='find waldo'
+                    className='game--image--choose'
+                    
+                    style={{ width: "60%" }} ></img>
+            </div>
         )
     })
 
@@ -76,7 +80,7 @@ const Game = (props) => {
             {!props.playing ?
                 <div>
                     <h1>Choose Your Difficulty!</h1>
-                    <div className="game--selection">
+                    <div className="level--images">
                         {imgElements}
                     </div>
                 </div>

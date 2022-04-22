@@ -45,13 +45,12 @@ const Leaderboard = (props) => {
         const difficulties = ['Easy', 'Medium', 'Hard', 'Insane']
         return (
             <div className="leaderboard--item--container">
-                <div className="hover--text">{difficulties[i]}</div>
-            <img src={pic.image}
-                key={i}
-                alt='find waldo'
-                className='game--image--choose'
-                onClick={() => props.setDifficultySelection(levelIndex[i])}
-                style={{ width: "35%" }} ></img>
+                <div className="hover--text" onClick={() => props.setDifficultySelection(levelIndex[i])}><p>{difficulties[i]}</p></div>
+                <img src={pic.image}
+                    key={i}
+                    alt='find waldo'
+                    className='game--image--choose'
+                    style={{ width: "60%" }} ></img>
             </div>
         )
     })
@@ -59,7 +58,7 @@ const Leaderboard = (props) => {
     return (
         <div>
             {!props.difficultySelection && <h1>Choose which Leaderboard</h1>}
-            {props.difficultySelection ? leaderboardElements : selectionElements}
+            {props.difficultySelection ? leaderboardElements : <div className="level--images">{selectionElements}</div>}
         </div>
     )
 }
