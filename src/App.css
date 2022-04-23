@@ -1,9 +1,20 @@
-* { margin: 0; padding: 0;}
+* { margin: 0; padding: 0; font-family: 'Oswald', sans-serif;}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  text-decoration: underline;
+}
 
 .nav--links--container{
+  font-weight: 300;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  font-size: 40px;
 }
 
 .menu--item{
@@ -15,6 +26,7 @@
   cursor: pointer;
 }
 
+.game--title, .leaderboard--title{text-align: center;}
 
 .game--image{
   display: block;
@@ -39,16 +51,18 @@
 }
 
 .game--avatars--container{
-  width: 33rem;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  position: relative;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
   gap: 20px;
+  background-color: gray;
+  width: 7rem;
 }
 
 .game--avatar{
+  padding: 10px;
   position: relative;
   align-self: center;
   border-radius: 50%;
@@ -57,11 +71,14 @@
 }
 
 .game--avatar--overlay{
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
   border-radius: 40%;
   position: absolute;
+  padding: 10px;
   content: ' ';
-  width: 100px;
-  height: 100%;
+  width: 5rem;
+  height: 5.8rem;
   background: rgba(34, 212, 58, 0.5);
   z-index: 2;
 }
@@ -91,24 +108,26 @@
 .leaderboard--container{
   text-transform: capitalize;
   width: 100%;
-  margin-top: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgb(226, 222, 222);
 }
 
 .leaderboard--title{
+  text-align: center;
+  text-transform: capitalize;
   margin-bottom: 0.5rem;
 }
 
 .leaderboard--item{
-  padding: 1.5rem;
-  background-color: rgb(226, 222, 222);
+  text-align: center;
+  padding: 0.5rem;
   width: 100%;
 }
 
 .leaderboard--item:hover{
-  padding: 1.5rem;
+  padding: 0.5rem;
   background-color: white;
   width: 100%;
 }

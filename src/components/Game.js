@@ -8,6 +8,20 @@ import LeaderboardModal from "./LeaderboardModal";
 
 const Game = (props) => {
 
+
+
+    const getResize = () => {
+        const mHeight = imageRef.current?.getBoundingClientRect().height
+        const mTop = imageRef.current?.getBoundingClientRect().top
+        const style = {
+            height: mHeight,
+            top: mTop
+        }
+        setModalStyle(style)
+    }
+
+    window.onresize = getResize
+
     const imageRef = useRef(null)
 
     const [modalStyle, setModalStyle] = React.useState(0)
@@ -21,6 +35,7 @@ const Game = (props) => {
             top: mTop
         }
         setModalStyle(style)
+
     }, [imageRef.current])
 
     const levelIndex = levelData.map(data => data.index)
@@ -79,7 +94,7 @@ const Game = (props) => {
         <div>
             {!props.playing ?
                 <div>
-                    <h1>Choose Your Difficulty!</h1>
+                    <h1 className="game--title">Choose Your Difficulty!</h1>
                     <div className="level--images">
                         {imgElements}
                     </div>

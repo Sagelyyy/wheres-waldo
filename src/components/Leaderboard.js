@@ -33,7 +33,6 @@ const Leaderboard = (props) => {
     const leaderboardElements = leaderboardData?.map((elem, i) => {
         return (
             <div className="leaderboard--container" key={i}>
-                <h1 className="leaderboard--title">{props.difficultySelection} Leaderboard</h1>
                 <h3 className="leaderboard--item">{elem.username}: {elem.time}</h3>
                 <hr className="leaderboard--hr"></hr>
             </div>
@@ -57,7 +56,8 @@ const Leaderboard = (props) => {
 
     return (
         <div>
-            {!props.difficultySelection && <h1>Choose which Leaderboard</h1>}
+            {!props.difficultySelection && <h1 className="leaderboard--title">Choose which Leaderboard to view</h1>}
+            {props.difficultySelection && <h1 className="leaderboard--title">{props.difficultySelection} Leaderboard</h1>}
             {props.difficultySelection ? leaderboardElements : <div className="level--images">{selectionElements}</div>}
         </div>
     )

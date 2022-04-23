@@ -42,12 +42,6 @@ const RouteSwitch = () => {
         return dbItems
     }
 
-    React.useEffect(() => {
-        // getScoreData()
-        // .then(data => console.log(data))
-    }, [])
-
-
     const clickHandler = (e) => {
         let htmlScroll = document.getElementsByTagName('html')[0].scrollTop
         let screenWidth = document.documentElement.clientWidth
