@@ -6,7 +6,7 @@ import avatarData from "./images/avatars.js";
 import levelData from "./levelData.js";
 import Leaderboard from "./components/Leaderboard.js";
 import firebaseApp from "./firebase.js";
-import { getFirestore, getDocs, collection, doc, setDoc, addDoc, deleteDoc, query, where } from "firebase/firestore";
+import { getFirestore, getDocs, collection} from "firebase/firestore";
 
 
 const RouteSwitch = () => {

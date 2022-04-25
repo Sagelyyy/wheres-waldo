@@ -96,13 +96,41 @@ a:hover{
   position: absolute;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
   width: 15rem;
   height: 10rem;
   background-color: white;
   border: 2px solid black;
   margin-left: 40%;
   margin-top: 20%;
+  gap: 0.5rem;
   z-index: 4;
+}
+
+.modal--description{
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.modal--invalid{
+  font-weight: 400;
+  color: red;
+}
+
+.modal--submit{
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 10rem;
+  height: 2rem;
+  color: white;
+  background-color: green;
+}
+
+.modal--redirect{
+  font-weight: 400;
 }
 
 .leaderboard--container{

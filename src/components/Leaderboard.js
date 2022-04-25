@@ -1,7 +1,7 @@
 import React from "react";
 import images from "../images/images";
 import levelData from "../levelData";
-import { getFirestore, getDocs, collection, doc, setDoc, addDoc, deleteDoc, query, where, orderBy, limit } from "firebase/firestore";
+import { getFirestore, getDocs, collection, query, orderBy, limit } from "firebase/firestore";
 import firebaseApp from "../firebase.js";
 
 const Leaderboard = (props) => {
@@ -12,8 +12,9 @@ const Leaderboard = (props) => {
 
 
     const getLeaderboardData = async (difficulty) => {
+        // Need to add limit
         const dbData = []
-        const userRef = collection(db, `users`, 'difficulties', props.difficultySelection);
+        const userRef = collection(db, `users`, 'difficulties', difficulty);
         const q = query(userRef, orderBy('time'))
         const querySnapshot = await getDocs(q)
 
