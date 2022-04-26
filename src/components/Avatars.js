@@ -4,6 +4,12 @@ import avatarData from "../images/avatars";
 
 const Avatars = (props) => {
 
+    const [showAvatars, setShowAvatars] = React.useState(true)
+
+    const toggleAvatars = () => {
+        setShowAvatars(old => !old)
+    }
+
     const waldoFound = props.found.filter(item => item.index === 'waldo')
     const wizardFound = props.found.filter(item => item.index === 'wizard')
     const odlawFound = props.found.filter(item => item.index === 'odlaw')
@@ -20,7 +26,10 @@ const Avatars = (props) => {
     })
 
     return (
-        avatars
+        <div className="avatar--container">
+        <button className="avatar--toggle" onClick={toggleAvatars}>{showAvatars ? 'Minimize' : 'Expand' }</button>
+        {showAvatars && avatars}
+        </div>
     )
 }
 

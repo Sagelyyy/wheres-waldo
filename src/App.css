@@ -50,6 +50,18 @@ a:hover{
   box-shadow: 4px 4px 8px black;
 }
 
+.avatar--container{
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar--toggle{
+  font-size: 20px;
+  align-self: center;
+  width: 6rem;
+  border-radius: 5px;
+}
+
 .game--avatars--container{
   align-items: center;
   justify-content: flex-start;
@@ -57,8 +69,11 @@ a:hover{
   flex-direction: column;
   position: fixed;
   gap: 20px;
-  background-color: gray;
+  background-color: white;
   width: 7rem;
+  border: 2px solid black;
+  box-shadow: 5px 10px 15px black;
+  border-radius: 5px;
 }
 
 .game--avatar{
