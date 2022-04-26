@@ -26,7 +26,7 @@ a:hover{
   cursor: pointer;
 }
 
-.game--title, .leaderboard--title{text-align: center;}
+.game--title, .leaderboard--title{text-align: center; text-transform: capitalize; margin-bottom: 0.5rem;}
 
 .game--image{
   display: block;
@@ -133,36 +133,32 @@ a:hover{
   font-weight: 400;
 }
 
+.leaderboard--items--container{
+  margin: 0 auto; 
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  width: 30rem;
+}
+
 .leaderboard--container{
   text-transform: capitalize;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: rgb(226, 222, 222);
 }
 
-.leaderboard--title{
-  text-align: center;
-  text-transform: capitalize;
-  margin-bottom: 0.5rem;
-}
-
 .leaderboard--item{
-  text-align: center;
-  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
   width: 100%;
+  text-align: left;
+  border-bottom: 1px solid black;
+  font-size: 25px;
 }
 
 .leaderboard--item:hover{
-  padding: 0.5rem;
+  cursor: pointer;
   background-color: white;
-  width: 100%;
-}
-
-.leaderboard--hr{
-  border-bottom: 1px solid gray;
-  width: 100%;
 }
 
 .leaderboard--item--container{
@@ -171,6 +167,18 @@ a:hover{
   justify-content: center;
   align-items: center;
   width: 50%;
+}
+
+.leaderboard--digit{
+  margin-left: 1rem;
+}
+
+.leaderboard--name{
+  font-weight: 500;
+}
+
+.leaderboard--time{
+  font-weight: 200;
 }
 
 .hover--text{

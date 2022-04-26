@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import Menu from "./Menu";
 import images from "../images/images";
-import gameData from "../gameData";
 import levelData from "../levelData";
 import Timer from "./Timer";
 import LeaderboardModal from "./LeaderboardModal";
+import Avatars from "./Avatars";
 
 const Game = (props) => {
 
@@ -42,48 +42,15 @@ const Game = (props) => {
     const imgElements = images.map((pic, i) => {
         const difficulties = ['Easy', 'Medium', 'Hard', 'Insane']
         return (
-            <div className="leaderboard--item--container">
+            <div key={i} className="leaderboard--item--container">
                 <div className="hover--text" onClick={() => props.levelSetup(levelIndex[i])}><p>{difficulties[i]}</p></div>
                 <img src={pic.image}
-                    key={i}
                     alt='find waldo'
                     className='game--image--choose'
                     
                     style={{ width: "60%" }} ></img>
             </div>
         )
-    })
-
-    const waldoFound = props.found.filter(item => item.index === 'waldo')
-    const wizardFound = props.found.filter(item => item.index === 'wizard')
-    const odlawFound = props.found.filter(item => item.index === 'odlaw')
-
-    const avatars = gameData.map((item, i) => {
-        // I dont like this. Need a better way
-        if (i === 0) {
-            return (
-                <div key={i}>
-                    {waldoFound[0].found ? <div className="game--avatar--overlay"> </div> : null}
-                    <img alt='waldo avatar' className="game--avatar" src={item.avatar} key={i} />
-                </div>
-            )
-        }
-        if (i === 1) {
-            return (
-                <div key={i}>
-                    {wizardFound[0].found ? <div className="game--avatar--overlay"> </div> : null}
-                    <img alt='wizard avatar' className="game--avatar" src={item.avatar} key={i} />
-                </div>
-            )
-        }
-        if (i === 2) {
-            return (
-                <div key={i}>
-                    {odlawFound[0].found ? <div className="game--avatar--overlay"> </div> : null}
-                    <img alt='odlaw avatar' className="game--avatar" src={item.avatar} key={i} />
-                </div>
-            )
-        }
     })
 
     document.addEventListener("contextmenu", (event) => {
@@ -103,7 +70,7 @@ const Game = (props) => {
                 <div>
                     {props.showModal ? <LeaderboardModal difficultySelection={props.difficultySelection} resetGame={props.resetGame} setUserData={props.setUserData} userData={props.userData} modalStyle={modalStyle} /> : null}
                     <div className="game--avatars--container">
-                        {avatars}
+                        <Avatars found={props.found} />
                         <Timer userData={props.userData} setUserData={props.setUserData} playing={props.playing} win={props.win} />
                     </div>
                     <img ref={imageRef} alt='find waldo' className='game--image' onMouseDown={props.clickHandler} src={props.level[0].image} />
