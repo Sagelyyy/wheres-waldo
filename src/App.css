@@ -74,6 +74,7 @@ a:hover{
   border: 2px solid black;
   box-shadow: 5px 10px 15px black;
   border-radius: 5px;
+  font-size: 20px;
 }
 
 .game--avatar{
@@ -146,6 +147,10 @@ a:hover{
 
 .modal--redirect{
   font-weight: 400;
+}
+
+.leaderboard--select--container{
+  display: flex;
 }
 
 .leaderboard--items--container{

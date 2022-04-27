@@ -58,7 +58,9 @@ const Leaderboard = (props) => {
         <div>
             {!props.difficultySelection && <h1 className="leaderboard--title">Choose which Leaderboard to view</h1>}
             {props.difficultySelection && <h1 className="leaderboard--title">{props.difficultySelection} Leaderboard</h1>}
-            {props.difficultySelection ? <div className="leaderboard--items--container">{leaderboardElements}</div> : <div className="level--images">{selectionElements}</div>}
+            <div className="leaderboard--select--container">{selectionElements}</div>}
+            {props.difficultySelection && <div className="leaderboard--items--container">{leaderboardElements}</div>}
+            {/* {props.difficultySelection ? <div className="leaderboard--items--container">{leaderboardElements}</div> : <div className="level--images">{selectionElements}</div>} */}
         </div>
     )
 }
