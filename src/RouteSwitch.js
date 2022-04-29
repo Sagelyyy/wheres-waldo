@@ -159,7 +159,7 @@ const RouteSwitch = () => {
     }
 
     return (
-        <BrowserRouter>
+        <HashRouter basename="/">
             <Routes>
                 <Route path="/" element={<App resetGame={resetGame} />}>
                     <Route path="/" element={<Game
@@ -182,7 +182,7 @@ const RouteSwitch = () => {
                     <Route path='/leaderboard' element={<Leaderboard difficultySelection={difficultySelection} setDifficultySelection={setDifficultySelection}/>} />
                 </Route>
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     );
 };
 
