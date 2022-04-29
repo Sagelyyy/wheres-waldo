@@ -8,8 +8,6 @@ import Avatars from "./Avatars";
 
 const Game = (props) => {
 
-
-
     const getResize = () => {
         const mHeight = imageRef.current?.getBoundingClientRect().height
         const mTop = imageRef.current?.getBoundingClientRect().top
@@ -47,7 +45,7 @@ const Game = (props) => {
                 <img src={pic.image}
                     alt='find waldo'
                     className='game--image--choose'
-                    
+
                     style={{ width: "60%" }} ></img>
             </div>
         )

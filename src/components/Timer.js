@@ -8,8 +8,6 @@ const Timer = (props) => {
     const [isActive, setIsActive] = React.useState(false)
     const increment = useRef(null)
 
-
-
     React.useEffect(() => {
         if (props.win) {
             stopTimer()
