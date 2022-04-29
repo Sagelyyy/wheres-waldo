@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Game from "./components/Game.js";
 import App from "./App.js";
 import avatarData from "./images/avatars.js";
