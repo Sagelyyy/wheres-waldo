@@ -1,6 +1,6 @@
-# HoloScript
+# Where's Waldo
 
-### What is HoloScript?
+### What is this?
 
 <p align='center'>
 <a href='https://sagelyyy.github.io/wheres-waldo/'>Live preview</a>
